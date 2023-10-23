@@ -33,4 +33,22 @@
     ((>= number 1) 1)))
 
 (define (root? x)
-  
+  (or (= -1 x)
+      (= 1/3 x)))
+
+(define (triangle? a b c)
+  (and (< a (+ b c))
+       (< b (+ a c))
+       (< c (+ a b))))
+
+(define (fibonacci n)
+  (if (< n 2)
+      n
+      (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))
+
+(define (fibonacci-tail n)
+  (define (fib n a b)
+    (if (= n 0)
+        a
+        (fib (- n 1) b (+ a b))))
+  (fib n 0 1))
