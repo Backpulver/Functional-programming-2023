@@ -52,3 +52,31 @@
         a
         (fib (- n 1) b (+ a b))))
   (fib n 0 1))
+
+(define (sum-interval a b)
+  (define (iter sum a b)
+    (if (> a b)
+        sum
+        (iter (+ sum a) (+ a 1) b)))
+  (iter 0 a b))
+
+(define (power base exponent)
+  (define (iter pow exponent)
+    (if (= exponent 0)
+        pow
+        (iter (* pow base) (- exponent 1))))
+  (iter 1 exponent))
+    
+(define (count-digits number)
+  (define (iter count number)
+    (if (< number 10)
+        (+ 1 count)
+        (iter (+ 1 count) (/ number 10))))
+  (iter 0 number))
+
+(define (reverse-digits number)
+  (define (iter revnum number)
+    (if (< number 10)
+        (+ (* revnum 10) (remainder number 10))
+        (iter (+ (* revnum 10) (remainder number 10)) (quotient number 10))))
+  (iter 0 number))
